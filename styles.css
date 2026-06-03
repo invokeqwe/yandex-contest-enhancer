@@ -1,0 +1,1376 @@
+/* =====================================================================
+   Yandex Contest — Dark Theme (ChatGPT/Cursor palette)
+   Based on real HTML/BEM class names from the page source.
+   ===================================================================== */
+
+:root {
+  --bg-main:   #212121;
+  --bg-card:   #2f2f2f;
+  --bg-soft:   #383838;
+  --bg-header: #171717;
+  --text-main: #ececec;
+  --text-muted: #8e8ea0;
+  --border:    #424242;
+  --line:      #343434;
+  --accent:    #10a37f;
+  --accent-hover: #0d8f6e;
+  --link:      #7cb9f5;
+  --danger:    #f87171;
+  --success:   #34d399;
+  --warning:   #fbbf24;
+  --editor-radius: 8px;
+}
+
+/* ── 1. Page base ─────────────────────────────────────────────────── */
+
+html,
+body.b-page {
+  background-color: var(--bg-main) !important;
+  color: var(--text-main) !important;
+}
+
+/* ── 2. Header ────────────────────────────────────────────────────── */
+
+.page__header {
+  background-color: #1f1f1f !important;
+  border-bottom: 1px solid var(--border) !important;
+}
+
+.page__header a,
+.page__header span,
+.page__header button {
+  color: var(--text-main) !important;
+}
+
+/* ── 3. Top navigation bar (Демоконтест, Настройки компиляторов…) ── */
+
+.tabs-menu_role_sections {
+  background-color: #1f1f1f !important;
+  border-bottom: 1px solid var(--border) !important;
+}
+
+.tabs-menu_role_sections .tabs-menu__tab a.link,
+.tabs-menu_role_sections .tabs-menu__tab a {
+  color: var(--text-muted) !important;
+}
+
+.tabs-menu_role_sections .tabs-menu__tab:hover a {
+  color: var(--text-main) !important;
+}
+
+/* ── 4. Contest area tabs (Положение / Задачи / Посылки) ─────────── */
+
+.tabs-menu_role_contest {
+  background-color: var(--bg-main) !important;
+  border-top: 1px solid var(--line) !important;
+  border-bottom: 1px solid var(--line) !important;
+}
+
+.tabs-menu_role_contest .tabs-menu__tab a {
+  color: var(--text-muted) !important;
+}
+
+.tabs-menu_role_contest .tabs-menu__tab:hover a {
+  color: var(--text-main) !important;
+}
+
+.tabs-menu_role_contest .tabs-menu__tab {
+  background-color: transparent !important;
+}
+
+.tabs-menu_role_contest .tabs-menu__tab_active_yes {
+  background-color: transparent !important;
+  border-top: none !important;
+  box-shadow: none !important;
+}
+
+.tabs-menu_role_contest .tabs-menu__tab_active_yes a {
+  color: var(--accent) !important;
+  border-bottom: 2px solid var(--accent) !important;
+  border-top: none !important;
+  box-shadow: none !important;
+}
+
+.tabs-menu_role_contest .tabs-menu__tab_active_yes::before,
+.tabs-menu_role_contest .tabs-menu__tab_active_yes::after,
+.tabs-menu_role_contest .tabs-menu__tab_active_yes a::before,
+.tabs-menu_role_contest .tabs-menu__tab_active_yes a::after {
+  background: transparent !important;
+  border-top: none !important;
+  box-shadow: none !important;
+}
+
+/* ── 5. Contest header (title + status block) ─────────────────────── */
+
+.content {
+  background-color: var(--bg-main) !important;
+}
+
+.contest-head {
+  background-color: var(--bg-main) !important;
+}
+
+.contest-head .link {
+  color: var(--link) !important;
+}
+
+.status__name {
+  color: var(--text-muted) !important;
+}
+
+.status__value,
+.status__value time {
+  color: var(--text-main) !important;
+}
+
+/* ── 6. Problem statement ─────────────────────────────────────────── */
+
+.problem__item {
+  background-color: var(--bg-main) !important;
+}
+
+.problem__statement {
+  color: var(--text-main) !important;
+}
+
+.problem-statement {
+  background-color: var(--bg-main) !important;
+  color: var(--text-main) !important;
+}
+
+.problem-statement .title {
+  color: var(--text-main) !important;
+}
+
+/* Status/verdict tags */
+.tag.status-tag:not(.tag_color_red):not(.tag_color_green),
+.tag.verdict-tag:not(.tag_color_red):not(.tag_color_green) {
+  background-color: var(--bg-soft) !important;
+  color: var(--text-muted) !important;
+  border: 1px solid var(--border) !important;
+}
+
+.tag.tag_color_gray,
+.tag_color_gray.popupable {
+  background-color: var(--bg-soft) !important;
+  color: #c9c9d1 !important;
+  border: 1px solid var(--border) !important;
+}
+
+.tag.tag_color_gray *,
+.tag_color_gray.popupable *,
+.tag.tag_color_gray a,
+.tag_color_gray.popupable a {
+  color: #c9c9d1 !important;
+}
+
+.tag.tag_color_red.status-tag,
+.tag.tag_color_red.verdict-tag,
+.tag_color_red.status-tag.popupable,
+.tag_color_red.verdict-tag.popupable {
+  background-color: #ffdada !important;
+  color: #a94442 !important;
+  border: 1px solid #ffdada !important;
+}
+
+.tag.tag_color_red.status-tag *,
+.tag.tag_color_red.verdict-tag *,
+.tag_color_red.status-tag.popupable *,
+.tag_color_red.verdict-tag.popupable * {
+  color: #a94442 !important;
+}
+
+.tag.tag_color_green.status-tag,
+.tag.tag_color_green.verdict-tag,
+.tag_color_green.status-tag.popupable,
+.tag_color_green.verdict-tag.popupable {
+  background-color: #d8f3ea !important;
+  color: #237a5b !important;
+  border: 1px solid #d8f3ea !important;
+}
+
+.tag.tag_color_green.status-tag *,
+.tag.tag_color_green.verdict-tag *,
+.tag_color_green.status-tag.popupable *,
+.tag_color_green.verdict-tag.popupable * {
+  color: #237a5b !important;
+}
+
+/* Limits table */
+.problem-statement table {
+  background-color: var(--bg-card) !important;
+  color: var(--text-main) !important;
+  border-collapse: collapse;
+}
+
+.problem-statement table tr {
+  background-color: var(--bg-card) !important;
+}
+
+.problem-statement table tr:nth-child(even) {
+  background-color: var(--bg-soft) !important;
+}
+
+.property-title {
+  color: var(--text-muted) !important;
+  background-color: var(--bg-soft) !important;
+}
+
+.problem-statement td {
+  border: 1px solid var(--border) !important;
+  color: var(--text-main) !important;
+}
+
+/* Problem body text */
+.legend,
+.legend p,
+.note {
+  color: var(--text-main) !important;
+}
+
+/* Sample I/O blocks */
+.sample-tests,
+.sample-test {
+  background-color: var(--bg-main) !important;
+  color: #ffffff !important;
+  border-top: 1px solid var(--line) !important;
+  border-bottom: 1px solid var(--line) !important;
+}
+
+.problem-statement .sample-tests table,
+.problem-statement .sample-test table,
+.problem-statement table.sample-tests,
+.problem-statement table.sample-test {
+  background-color: var(--bg-main) !important;
+  border-collapse: collapse;
+}
+
+.problem-statement .sample-tests tr,
+.problem-statement .sample-test tr,
+.problem-statement table.sample-tests tr,
+.problem-statement table.sample-test tr,
+.problem-statement .sample-tests tr:nth-child(even),
+.problem-statement .sample-test tr:nth-child(even),
+.problem-statement table.sample-tests tr:nth-child(even),
+.problem-statement table.sample-test tr:nth-child(even) {
+  background-color: var(--bg-main) !important;
+}
+
+.sample-tests .input,
+.sample-tests .output,
+.sample-test .input,
+.sample-test .output,
+.section-title {
+  background-color: var(--bg-main) !important;
+  color: #ffffff !important;
+}
+
+.sample-tests td,
+.sample-tests th,
+.sample-test td,
+.sample-test th {
+  background-color: var(--bg-main) !important;
+  border-color: var(--line) transparent !important;
+}
+
+.sample-tests .section-title,
+.sample-test .section-title {
+  background-color: var(--bg-main) !important;
+  border-bottom: 1px solid var(--line) !important;
+}
+
+/* Force white on inner text elements — Yandex's own rules can win on these */
+.input pre,
+.output pre,
+.input .title,
+.output .title,
+.input .section-title,
+.output .section-title {
+  color: #ffffff !important;
+  background-color: transparent !important;
+}
+
+/* "Ввод" / "Вывод" sample-title headers (confirmed black via runtime log) */
+.problem__sample-title,
+.problem__copy-sample {
+  color: #ffffff !important;
+  background-color: var(--bg-main) !important;
+}
+
+.problem__sample-title * {
+  color: #ffffff !important;
+}
+
+/* Generic pre — low specificity (0,0,1) so CodeMirror reset can easily override */
+pre {
+  background-color: transparent !important;
+  color: var(--text-main) !important;
+  border: none !important;
+  padding: 8px;
+}
+
+.sample-tests pre,
+.sample-test pre {
+  margin: 0 !important;
+  padding: 8px 0 !important;
+}
+
+/* CodeMirror lines reset — specificity (0,2,1) beats generic pre (0,0,1).
+   Yandex's CM uses plain <pre> with no class, so we must use ancestor context selectors. */
+.CodeMirror .CodeMirror-code pre,
+.CodeMirror .CodeMirror-lines pre {
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  padding: 0 4px !important;
+  margin: 0 !important;
+  box-shadow: none !important;
+  color: inherit !important;
+}
+
+code, kbd, samp {
+  background-color: var(--bg-soft) !important;
+  color: var(--text-main) !important;
+}
+
+/* Run report test blocks */
+html.yc-run-report-page pre,
+html.yc-run-report-page textarea,
+html.yc-run-report-page code,
+html.yc-run-report-page samp,
+html.yc-run-report-page [readonly],
+html.yc-run-report-page [style*="background: white"],
+html.yc-run-report-page [style*="background-color: white"],
+html.yc-run-report-page [style*="background:#fff"],
+html.yc-run-report-page [style*="background-color:#fff"],
+html.yc-run-report-page [style*="background: rgb(255, 255, 255)"],
+html.yc-run-report-page [style*="background-color: rgb(255, 255, 255)"] {
+  background-color: var(--bg-card) !important;
+  color: var(--text-main) !important;
+  border-color: var(--border) !important;
+}
+
+/* ── 7. Submit form ("Ответ" section) ─────────────────────────────── */
+
+.problem__answer-title {
+  color: var(--text-main) !important;
+  background-color: var(--bg-main) !important;
+}
+
+/* "Язык" label */
+.solution__label {
+  color: var(--text-muted) !important;
+}
+
+/* All .button_theme_normal buttons — language selector, "Показать меня", etc. */
+.button_theme_normal,
+.button.button_theme_normal,
+button.button_theme_normal {
+  background-color: var(--bg-soft) !important;
+  color: var(--text-main) !important;
+  border: 1px solid var(--border) !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+/* ::before pseudo-element on these buttons has white bg in Yandex's CSS — make transparent */
+.button_theme_normal::before,
+.button.button_theme_normal::before,
+button.button_theme_normal::before {
+  background-color: transparent !important;
+  background: transparent !important;
+}
+
+.button_theme_normal:hover,
+.button.button_theme_normal:hover {
+  border-color: var(--accent) !important;
+  color: var(--accent) !important;
+  background-color: var(--bg-card) !important;
+}
+
+.button_theme_normal:active,
+.button.button_theme_normal:active,
+button.button_theme_normal:active,
+.button_theme_normal.button_focused_yes,
+.button.button_theme_normal.button_focused_yes,
+.select_opened_yes .button_theme_normal,
+.select_opened_yes .button.button_theme_normal {
+  color: #ffffff !important;
+  background-color: var(--bg-soft) !important;
+  border-color: var(--accent) !important;
+}
+
+.select_opened_yes .select__button-text,
+.button_theme_normal:active .select__button-text,
+.button.button_theme_normal:active .select__button-text {
+  color: #ffffff !important;
+}
+
+/* Language dropdown popup items — real class names from runtime */
+.select__popup .select__item,
+.select__popup .select__text {
+  color: #ffffff !important;
+  background-color: var(--bg-card) !important;
+}
+
+.select__popup .select__item:hover .select__text,
+.select__popup .select__item:hover {
+  background-color: var(--bg-soft) !important;
+  color: #ffffff !important;
+}
+
+.select__popup .select__item_selected_yes .select__text,
+.select__popup .select__item_selected_yes {
+  color: #ffffff !important;
+}
+
+.select__popup {
+  background-color: var(--bg-card) !important;
+  border: 1px solid var(--border) !important;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.5) !important;
+}
+
+.select__list {
+  background-color: var(--bg-card) !important;
+}
+
+.select__button-text {
+  color: var(--text-main) !important;
+}
+
+/* "Набрать здесь" / "Отправить файл" radio buttons */
+.radio-button {
+  background-color: var(--bg-soft) !important;
+  color: var(--text-main) !important;
+  border-radius: 10px !important;
+  overflow: hidden;
+}
+
+.radio-button__radio {
+  background-color: var(--bg-soft) !important;
+  border: 1px solid var(--border) !important;
+  color: var(--text-main) !important;
+  border-radius: 0 !important;
+}
+
+.radio-button__radio:first-child {
+  border-radius: 10px 0 0 10px !important;
+}
+
+.radio-button__radio:last-child {
+  border-radius: 0 10px 10px 0 !important;
+}
+
+.radio-button__radio::before {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.radio-button__radio_checked_yes {
+  background-color: var(--bg-card) !important;
+  border-color: var(--accent) !important;
+  color: var(--accent) !important;
+}
+
+.radio-button__radio_checked_yes::before {
+  background: var(--bg-card) !important;
+}
+
+.radio-button__text {
+  color: inherit !important;
+}
+
+.table__hook,
+.table__hook * {
+  color: #b8b8c2 !important;
+}
+
+/* Code editor — CodeMirror */
+.CodeMirror {
+  background-color: var(--bg-card) !important;
+  color: var(--text-main) !important;
+}
+
+/* ── THE ROOT CAUSE of the white border ────────────────────────────
+   .input__state is position:absolute; inset:0 inside .input__box.
+   It draws the background and border frame of the input widget.
+   On the light theme its background is white, which shows through
+   the 12px top/bottom padding of .input__box as a "white border".
+   Fix: transparent background + dark border.
+─────────────────────────────────────────────────────────────────── */
+.input__state {
+  background: transparent !important;
+  border-color: var(--border) !important;
+  box-shadow: none !important;
+}
+
+.input_focused_yes .input__state {
+  border-color: var(--accent) !important;
+  box-shadow: 0 0 0 2px rgba(16, 163, 127, 0.25) !important;
+}
+
+.input_invalid_yes .input__state {
+  border-color: var(--danger) !important;
+  box-shadow: 0 0 0 2px rgba(248, 113, 113, 0.25) !important;
+}
+
+/* The site uses outline/box-shadow (not border) for the white glow — override all */
+.input__box {
+  background-color: transparent !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.input_view_outline .input__box,
+.input_view_normal .input__box {
+  border-color: transparent !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.input_view_outline,
+.input_view_normal {
+  background-color: transparent !important;
+}
+
+/* Input control (text fields, search) */
+.input__control {
+  background-color: transparent !important;
+  color: var(--text-main) !important;
+  border: none !important;
+  outline: none !important;
+}
+
+.input__control::placeholder {
+  color: var(--text-muted) !important;
+}
+
+.input_view_outline svg,
+.input_view_outline path,
+.input_view_outline .hr-icon,
+.input_view_normal svg,
+.input_view_normal path,
+.input_view_normal .hr-icon {
+  color: var(--text-main) !important;
+  fill: var(--text-main) !important;
+  stroke: var(--text-main) !important;
+}
+
+.CodeMirror-gutters {
+  background-color: var(--bg-soft) !important;
+  border-right: 1px solid var(--border) !important;
+}
+
+.CodeMirror-linenumber {
+  color: var(--text-muted) !important;
+}
+
+.CodeMirror .CodeMirror-cursor {
+  border-left: 2px solid var(--text-main) !important;
+}
+
+/* Ensure cursor is visible when editor has focus */
+.CodeMirror-focused .CodeMirror-cursors,
+.CodeMirror.CodeMirror-focused .CodeMirror-cursors {
+  visibility: visible !important;
+}
+
+.CodeMirror-focused .CodeMirror-cursor,
+.CodeMirror.CodeMirror-focused .CodeMirror-cursor {
+  visibility: visible !important;
+}
+
+.CodeMirror .CodeMirror-selected,
+.CodeMirror-focused .CodeMirror-selected {
+  background-color: rgba(16, 163, 127, 0.35) !important;
+}
+
+/* CodeMirror syntax highlighting — PyCharm Darcula inspired */
+.CodeMirror .cm-keyword,
+.CodeMirror .cm-operator {
+  color: #ff9d3b !important;
+}
+
+.CodeMirror .cm-string,
+.CodeMirror .cm-string-2 {
+  color: #7ee787 !important;
+}
+
+.CodeMirror .cm-number,
+.CodeMirror .cm-atom {
+  color: #5cc8ff !important;
+}
+
+.CodeMirror .cm-comment {
+  color: #9aa0a6 !important;
+  font-style: italic !important;
+}
+
+.CodeMirror .cm-def,
+.CodeMirror .cm-variable-2,
+.CodeMirror .cm-type {
+  color: #ffd166 !important;
+}
+
+.CodeMirror .cm-builtin,
+.CodeMirror .cm-property,
+.CodeMirror .cm-qualifier {
+  color: #c792ea !important;
+}
+
+.CodeMirror .cm-variable,
+.CodeMirror .cm-variable-3 {
+  color: #d6deeb !important;
+}
+
+.CodeMirror .cm-meta,
+.CodeMirror .cm-tag,
+.CodeMirror .cm-attribute {
+  color: #82aaff !important;
+}
+
+.CodeMirror .cm-error {
+  color: #ff5370 !important;
+  background-color: rgba(255, 83, 112, 0.18) !important;
+}
+
+/* Textarea fallback (hidden but still styled) */
+.input__control {
+  background-color: transparent !important;
+  color: var(--text-main) !important;
+  border: none !important;
+}
+
+.input__box {
+  background-color: transparent !important;
+}
+
+.input.input_type_textarea {
+  background-color: var(--bg-card) !important;
+  border-radius: var(--editor-radius) !important;
+}
+
+.input.input_type_textarea .input__box {
+  background-color: var(--bg-card) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--editor-radius) !important;
+  overflow: hidden;
+}
+
+.input.input_type_textarea .input__state {
+  border-color: transparent !important;
+  border-radius: var(--editor-radius) !important;
+}
+
+.input.input_type_textarea .CodeMirror {
+  border-radius: var(--editor-radius) !important;
+  overflow: hidden;
+}
+
+.input.input_type_textarea .CodeMirror-gutters {
+  border-radius: var(--editor-radius) 0 0 var(--editor-radius) !important;
+}
+
+/* ── 8. Buttons ───────────────────────────────────────────────────── */
+
+/* Primary submit button ("Отправить") */
+.hr-button_view_primary {
+  background-color: var(--accent) !important;
+  color: #fff !important;
+  border: 1px solid var(--accent) !important;
+}
+
+.hr-button_view_primary:hover {
+  background-color: var(--accent-hover) !important;
+  border-color: var(--accent-hover) !important;
+}
+
+/* Secondary buttons ("Следующая", "Предыдущая", "Выбрать") */
+.hr-button_view_secondary {
+  background-color: var(--bg-soft) !important;
+  color: var(--text-main) !important;
+  border: 1px solid var(--border) !important;
+}
+
+.hr-button_view_secondary:hover {
+  border-color: var(--accent) !important;
+  color: var(--accent) !important;
+}
+
+/* Ghost buttons (language switcher, misc) */
+.hr-button_view_ghost {
+  background-color: transparent !important;
+  color: var(--text-muted) !important;
+  border: 1px solid transparent !important;
+}
+
+.hr-button_view_ghost:hover {
+  color: var(--text-main) !important;
+  background-color: var(--bg-soft) !important;
+}
+
+/* Outline buttons */
+.hr-button_view_outline {
+  background-color: transparent !important;
+  color: var(--text-main) !important;
+  border: 1px solid var(--border) !important;
+}
+
+.hr-button_disabled_yes {
+  opacity: 0.4 !important;
+}
+
+/* General hr-button text/icon color */
+.hr-button__text,
+.hr-icon {
+  color: inherit !important;
+}
+
+/* ── 9. Problem footer (attempts, navigation) ─────────────────────── */
+
+.problem__footer {
+  background-color: var(--bg-main) !important;
+}
+
+.problem__attempts {
+  color: var(--text-muted) !important;
+}
+
+/* ── 10. Problem list sidebar (vertical tabs) ─────────────────────── */
+
+/* DO NOT add border/margin/padding — it changes width and breaks the float layout */
+.tabs-menu_role_problems {
+  background-color: var(--bg-main) !important;
+  border-left: 1px solid var(--line) !important;
+}
+
+.tabs-menu_role_problems .tabs-menu__tab a {
+  color: var(--link) !important;
+}
+
+.tabs-menu_role_problems .tabs-menu__tab:hover {
+  background-color: transparent !important;
+}
+
+.tabs-menu_role_problems .tabs-menu__tab_active_yes {
+  background-color: transparent !important;
+}
+
+.tabs-menu_role_problems .tabs-menu__tab_active_yes a {
+  color: var(--text-main) !important;
+}
+
+/* Solved problem indicator */
+.solution-status_color_green {
+  color: var(--success) !important;
+}
+
+/* ── 11. General links ────────────────────────────────────────────── */
+
+a.link {
+  color: var(--link) !important;
+}
+
+a.link:hover {
+  color: var(--accent) !important;
+}
+
+/* ── 12. Submissions table (.content__no-submissions) ─────────────── */
+
+.content__no-submissions {
+  color: var(--text-muted) !important;
+}
+
+/* Large tables (standings, submissions) */
+table:not(.problem-statement table) {
+  background-color: var(--bg-card) !important;
+  color: var(--text-main) !important;
+  width: 100%;
+  max-width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 8px !important;
+  overflow: hidden;
+  table-layout: fixed;
+  font-size: 13px !important;
+}
+
+table:not(.problem-statement table) thead th,
+table:not(.problem-statement table) thead tr {
+  background-color: var(--bg-soft) !important;
+  color: var(--text-main) !important;
+}
+
+table:not(.problem-statement table) tbody tr {
+  background-color: var(--bg-card) !important;
+}
+
+table:not(.problem-statement table) tbody tr:nth-child(even) {
+  background-color: var(--bg-main) !important;
+}
+
+table:not(.problem-statement table) tbody tr:hover {
+  background-color: var(--bg-soft) !important;
+}
+
+table:not(.problem-statement table) th,
+table:not(.problem-statement table) td {
+  border: 1px solid var(--border) !important;
+  color: var(--text-main) !important;
+  padding: 7px 9px !important;
+  text-align: left !important;
+  vertical-align: middle !important;
+  line-height: 1.25 !important;
+  overflow-wrap: normal;
+  word-break: normal;
+  overflow: hidden;
+  text-overflow: clip;
+  box-sizing: border-box;
+}
+
+table:not(.problem-statement table) th {
+  white-space: normal;
+  overflow-wrap: normal;
+  overflow: visible;
+}
+
+table:not(.problem-statement table) td:nth-child(1),
+table:not(.problem-statement table) td:nth-child(2),
+table:not(.problem-statement table) td:nth-child(3),
+table:not(.problem-statement table) td:nth-child(5),
+table:not(.problem-statement table) td:nth-child(7),
+table:not(.problem-statement table) td:nth-child(8),
+table:not(.problem-statement table) td:nth-child(9),
+table:not(.problem-statement table) td:nth-child(10),
+table:not(.problem-statement table) td:nth-child(11) {
+  white-space: nowrap;
+}
+
+table:not(.problem-statement table) td:nth-child(4),
+table:not(.problem-statement table) td:nth-child(6) {
+  overflow-wrap: break-word;
+  white-space: normal;
+}
+
+table:not(.problem-statement table) th:nth-child(1),
+table:not(.problem-statement table) td:nth-child(1) {
+  width: 15%;
+}
+
+table:not(.problem-statement table) th:nth-child(2),
+table:not(.problem-statement table) td:nth-child(2) {
+  width: 9%;
+}
+
+table:not(.problem-statement table) th:nth-child(3),
+table:not(.problem-statement table) td:nth-child(3) {
+  width: 7%;
+}
+
+table:not(.problem-statement table) th:nth-child(4),
+table:not(.problem-statement table) td:nth-child(4) {
+  width: 17%;
+}
+
+table:not(.problem-statement table) th:nth-child(5),
+table:not(.problem-statement table) td:nth-child(5) {
+  width: 8%;
+}
+
+table:not(.problem-statement table) th:nth-child(6),
+table:not(.problem-statement table) td:nth-child(6) {
+  width: 10%;
+}
+
+table:not(.problem-statement table) th:nth-child(7),
+table:not(.problem-statement table) td:nth-child(7) {
+  width: 7%;
+}
+
+table:not(.problem-statement table) th:nth-child(8),
+table:not(.problem-statement table) td:nth-child(8) {
+  width: 8%;
+}
+
+table:not(.problem-statement table) th:nth-child(9),
+table:not(.problem-statement table) td:nth-child(9) {
+  width: 5%;
+}
+
+table:not(.problem-statement table) th:nth-child(10),
+table:not(.problem-statement table) td:nth-child(10) {
+  width: 7%;
+}
+
+table:not(.problem-statement table) th:nth-child(11),
+table:not(.problem-statement table) td:nth-child(11) {
+  width: 7%;
+}
+
+/* Standings table — clean reference-like layout */
+.yc-standings-table,
+table:has(.standings-cell) {
+  width: auto !important;
+  min-width: 100% !important;
+  max-width: none !important;
+  table-layout: auto !important;
+  font-size: 14px !important;
+  background-color: var(--bg-card) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 8px !important;
+  overflow: hidden !important;
+  border-collapse: separate !important;
+  border-spacing: 0 !important;
+}
+
+.yc-standings-table th,
+.yc-standings-table td,
+table:has(.standings-cell) th,
+table:has(.standings-cell) td {
+  width: auto !important;
+  min-width: 0 !important;
+  padding: 12px 14px !important;
+  border-top: none !important;
+  border-right: none !important;
+  border-bottom: 1px solid var(--line) !important;
+  border-left: none !important;
+  background-color: transparent !important;
+  color: var(--text-main) !important;
+  overflow: hidden !important;
+  text-overflow: initial !important;
+  white-space: normal !important;
+  text-align: center !important;
+  vertical-align: middle !important;
+  line-height: 1.3 !important;
+  box-shadow: none !important;
+}
+
+.yc-standings-table thead th,
+.yc-standings-table thead tr,
+table:has(.standings-cell) thead th,
+table:has(.standings-cell) thead tr {
+  background-color: var(--bg-card) !important;
+  color: var(--text-main) !important;
+  font-weight: 600 !important;
+}
+
+.yc-standings-table tbody tr,
+.yc-standings-table .table__row,
+table:has(.standings-cell) tbody tr,
+table:has(.standings-cell) .table__row {
+  background-color: var(--bg-card) !important;
+}
+
+.yc-standings-table tbody tr:nth-child(even),
+.yc-standings-table .table__row:nth-child(even),
+table:has(.standings-cell) tbody tr:nth-child(even),
+table:has(.standings-cell) .table__row:nth-child(even) {
+  background-color: #2c2c2c !important;
+}
+
+.yc-standings-table tbody tr:hover,
+.yc-standings-table .table__row:hover,
+table:has(.standings-cell) tbody tr:hover,
+table:has(.standings-cell) .table__row:hover {
+  background-color: var(--bg-soft) !important;
+}
+
+.yc-standings-table th:nth-child(1),
+.yc-standings-table td:nth-child(1),
+table:has(.standings-cell) th:nth-child(1),
+table:has(.standings-cell) td:nth-child(1) {
+  width: 48px !important;
+  text-align: center !important;
+  white-space: nowrap !important;
+}
+
+.yc-standings-table th:nth-child(2),
+.yc-standings-table td:nth-child(2),
+table:has(.standings-cell) th:nth-child(2),
+table:has(.standings-cell) td:nth-child(2) {
+  width: 180px !important;
+  max-width: 180px !important;
+  text-align: left !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+
+.yc-standings-table th:nth-last-child(-n + 2),
+.yc-standings-table td:nth-last-child(-n + 2),
+table:has(.standings-cell) th:nth-last-child(-n + 2),
+table:has(.standings-cell) td:nth-last-child(-n + 2) {
+  min-width: 72px !important;
+  font-weight: 600 !important;
+}
+
+.yc-standings-table th:not(:nth-child(1)):not(:nth-child(2)):not(:nth-last-child(-n + 2)),
+.yc-standings-table td:not(:nth-child(1)):not(:nth-child(2)):not(:nth-last-child(-n + 2)),
+table:has(.standings-cell) th:not(:nth-child(1)):not(:nth-child(2)):not(:nth-last-child(-n + 2)),
+table:has(.standings-cell) td:not(:nth-child(1)):not(:nth-child(2)):not(:nth-last-child(-n + 2)) {
+  min-width: 78px !important;
+}
+
+.yc-standings-table .yc-standings-duplicate-column {
+  display: none !important;
+}
+
+.yc-standings-table .standings-cell,
+.yc-standings-table .standings-cell__plain,
+.yc-standings-table .standings-cell__problem-title,
+.yc-standings-table .standings-cell__result,
+table:has(.standings-cell) .standings-cell,
+table:has(.standings-cell) .standings-cell__plain,
+table:has(.standings-cell) .standings-cell__problem-title,
+table:has(.standings-cell) .standings-cell__result {
+  background-color: transparent !important;
+  color: var(--text-muted) !important;
+  overflow: hidden !important;
+  white-space: normal !important;
+}
+
+.yc-standings-table .yc-standings-result-positive,
+.yc-standings-table .yc-standings-result-positive *,
+table:has(.standings-cell) .yc-standings-result-positive,
+table:has(.standings-cell) .yc-standings-result-positive * {
+  color: var(--accent) !important;
+}
+
+.yc-standings-table .yc-standings-result-negative,
+.yc-standings-table .yc-standings-result-negative *,
+table:has(.standings-cell) .yc-standings-result-negative,
+table:has(.standings-cell) .yc-standings-result-negative * {
+  color: #ff6b6b !important;
+}
+
+.yc-standings-table .yc-standings-result-dash,
+.yc-standings-table .yc-standings-result-dash *,
+table:has(.standings-cell) .yc-standings-result-dash,
+table:has(.standings-cell) .yc-standings-result-dash * {
+  color: #a7a7b2 !important;
+}
+
+/* Expanded run-report row */
+.table__row_show_true,
+.table__row_show_true td,
+.table__row_show_true th {
+  background-color: var(--bg-card) !important;
+  color: var(--text-main) !important;
+  border-color: var(--border) !important;
+}
+
+.table__row_show_true pre,
+.table__row_show_true textarea,
+.table__row_show_true code,
+.table__row_show_true samp,
+.table__row_show_true [readonly],
+.table__row_show_true [style*="background"],
+.table__row_show_true [style*="background-color"] {
+  background-color: var(--bg-soft) !important;
+  color: var(--text-main) !important;
+  border-color: var(--border) !important;
+  border-radius: 12px !important;
+  box-shadow: none !important;
+}
+
+.table__row_show_true pre,
+.table__row_show_true textarea,
+.table__row_show_true [readonly] {
+  padding: 16px 20px !important;
+  white-space: pre-wrap !important;
+}
+
+.table__row_show_true button,
+.table__row_show_true [role="button"],
+.table__row_show_true .button,
+.table__row_show_true .hr-button {
+  background-color: var(--bg-soft) !important;
+  color: var(--text-main) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 10px !important;
+  box-shadow: none !important;
+}
+
+.table__row_show_true svg,
+.table__row_show_true path {
+  color: var(--text-main) !important;
+  fill: var(--text-main) !important;
+  stroke: var(--text-main) !important;
+}
+
+.yc-run-report-panel {
+  background-color: var(--bg-soft) !important;
+  color: var(--text-main) !important;
+  border-color: var(--border) !important;
+  border-radius: 12px !important;
+  box-shadow: none !important;
+}
+
+/* Standings — individual td cells override tr background, must target directly */
+.table__cell {
+  background-color: var(--bg-card) !important;
+  color: var(--text-main) !important;
+}
+
+.table__cell_role_place {
+  background-color: var(--bg-soft) !important;
+}
+
+.yc-standings-table .table__cell,
+table:has(.standings-cell) .table__cell {
+  background-color: transparent !important;
+}
+
+.yc-standings-table tbody tr:first-child,
+.yc-standings-table .table__row:first-child,
+table:has(.standings-cell) tbody tr:first-child,
+table:has(.standings-cell) .table__row:first-child {
+  background-color: rgba(124, 185, 245, 0.09) !important;
+}
+
+.yc-standings-table tbody tr:first-child .table__cell,
+.yc-standings-table .table__row:first-child .table__cell,
+table:has(.standings-cell) tbody tr:first-child .table__cell,
+table:has(.standings-cell) .table__row:first-child .table__cell {
+  background-color: transparent !important;
+}
+
+/* Run-report table layout — match the clean light-theme structure */
+html.yc-run-report-page table:not(.problem-statement table),
+html.yc-run-report-page table:not(.problem-statement table) thead,
+html.yc-run-report-page table:not(.problem-statement table) tbody,
+html.yc-run-report-page table:not(.problem-statement table) tr,
+html.yc-run-report-page .table__row,
+html.yc-run-report-page .table__cell {
+  background-color: transparent !important;
+}
+
+html.yc-run-report-page table:not(.problem-statement table) {
+  border-radius: 0 !important;
+  overflow: visible;
+  table-layout: auto;
+  width: 100%;
+  max-width: 100%;
+  font-size: inherit !important;
+}
+
+html.yc-run-report-page table:not(.problem-statement table) th,
+html.yc-run-report-page table:not(.problem-statement table) td,
+html.yc-run-report-page .table__cell {
+  border-top: none !important;
+  border-right: none !important;
+  border-bottom: 1px solid var(--line) !important;
+  border-left: none !important;
+  color: var(--text-main) !important;
+  padding: 16px 20px !important;
+  width: auto;
+}
+
+html.yc-run-report-page table:not(.problem-statement table) thead th,
+html.yc-run-report-page table:not(.problem-statement table) thead tr {
+  background-color: transparent !important;
+  color: var(--text-main) !important;
+}
+
+html.yc-run-report-page table:not(.problem-statement table) tbody tr:hover {
+  background-color: transparent !important;
+}
+
+html.yc-run-report-page .table__row_show_true,
+html.yc-run-report-page .table__row_show_true td,
+html.yc-run-report-page .table__row_show_true th,
+html.yc-run-report-page .table__row_show_true .table__cell {
+  background-color: transparent !important;
+}
+
+.yc-dark-dash-text,
+.yc-dark-dash-text * {
+  color: #b8b8c2 !important;
+}
+
+/* Standings cell content spans */
+.standings-cell,
+.standings-cell__plain,
+.standings-cell__problem-title,
+.standings-cell__result {
+  color: var(--text-main) !important;
+  background-color: transparent !important;
+}
+
+/* ── 13. Dropdowns / popups ───────────────────────────────────────── */
+
+.popup__content,
+.popup .b-menu-vert {
+  background-color: var(--bg-card) !important;
+  border: 1px solid var(--border) !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5) !important;
+}
+
+.b-menu-vert__layout-unit,
+.b-menu-vert__layout-unit a,
+.lang-switcher__lang {
+  background-color: var(--bg-card) !important;
+  color: var(--text-main) !important;
+}
+
+.b-menu-vert__layout-unit:hover,
+.lang-switcher__lang:hover {
+  background-color: var(--bg-soft) !important;
+}
+
+.b-menu-vert__layout-unit:active,
+.b-menu-vert__layout-unit:active a,
+.lang-switcher__lang:active,
+.b-menu-vert__layout-unit_state_current,
+.b-menu-vert__layout-unit_state_current a,
+.b-menu-vert__layout-unit_checked_yes,
+.b-menu-vert__layout-unit_checked_yes a {
+  color: #ffffff !important;
+  background-color: var(--bg-soft) !important;
+}
+
+.lang-switcher__lang-name {
+  color: var(--text-main) !important;
+}
+
+/* ── 14. Footer ───────────────────────────────────────────────────── */
+
+.page__foot,
+.footer {
+  background-color: var(--bg-header) !important;
+  border-top: 1px solid var(--border) !important;
+}
+
+.footer a,
+.copyright,
+.copyright__link {
+  color: var(--text-muted) !important;
+}
+
+.footer a:hover {
+  color: var(--text-main) !important;
+}
+
+/* ── 15. Misc ─────────────────────────────────────────────────────── */
+
+hr {
+  border-color: var(--border) !important;
+}
+
+/* Native hidden <select> inside Yandex custom widget — may bleed through */
+.select__control {
+  background-color: var(--bg-soft) !important;
+  color: var(--text-main) !important;
+  border-color: var(--border) !important;
+}
+
+/* Submission/problem message area — appears as white block at bottom */
+.problem__messages {
+  background-color: var(--bg-main) !important;
+  color: var(--text-main) !important;
+  border-top: none !important;
+}
+
+.problem__messages.problem__messages_type_error,
+.problem__messages_type_error {
+  background-color: #3a2f31 !important;
+  color: #f1b8b8 !important;
+  border: 1px solid transparent !important;
+  border-radius: 14px !important;
+  padding: 12px 28px !important;
+  margin: 24px 0 !important;
+  min-height: 0 !important;
+  box-sizing: border-box !important;
+  line-height: 1.35 !important;
+}
+
+.problem__messages.problem__messages_type_error *,
+.problem__messages_type_error * {
+  color: #f1b8b8 !important;
+  fill: #f1b8b8 !important;
+  stroke: #f1b8b8 !important;
+}
+
+.problem__messages.problem__messages_type_error > *,
+.problem__messages_type_error > * {
+  background-color: transparent !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.msg.msg_type_play,
+.problem__messages .msg_type_play {
+  background-color: #263a34 !important;
+  color: #b8f0dc !important;
+  border: 1px solid transparent !important;
+  border-radius: 14px !important;
+  padding: 12px 28px !important;
+  min-height: 0 !important;
+  box-sizing: border-box !important;
+  line-height: 1.35 !important;
+  box-shadow: none !important;
+}
+
+.msg.msg_type_play *,
+.problem__messages .msg_type_play * {
+  color: #b8f0dc !important;
+  fill: #b8f0dc !important;
+  stroke: #b8f0dc !important;
+}
+
+.msg.msg_type_play > *,
+.problem__messages .msg_type_play > * {
+  background-color: transparent !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+}
+
+.yc-dark-label-text {
+  color: var(--text-main) !important;
+}
+
+.yc-dark-pager-control {
+  color: #c9c9d1 !important;
+}
+
+.yc-dark-pager-control *,
+.yc-dark-pager-control svg,
+.yc-dark-pager-control path {
+  color: #c9c9d1 !important;
+  fill: #c9c9d1 !important;
+  stroke: #c9c9d1 !important;
+}
+
+.yc-dark-pager-control:hover {
+  color: #ffffff !important;
+}
+
+.yc-dark-pager-control:hover *,
+.yc-dark-pager-control:hover svg,
+.yc-dark-pager-control:hover path {
+  color: #ffffff !important;
+  fill: #ffffff !important;
+  stroke: #ffffff !important;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-main);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}

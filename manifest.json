@@ -1,0 +1,35 @@
+{
+  "manifest_version": 3,
+  "name": "Yandex Contest Dark Theme",
+  "version": "1.0.0",
+  "description": "Тёмная тема для страниц Yandex Contest",
+  "content_scripts": [
+    {
+      "matches": [
+        "https://contest.yandex.ru/contest/*",
+        "https://contest.yandex.ru/contest/*/*",
+        "https://contest.yandex.ru/contest/*/*/*",
+        "https://contest.yandex.ru/contest/*/*/*/*"
+      ],
+      "js": ["content.js"],
+      "run_at": "document_start"
+    },
+    {
+      "matches": [
+        "https://contest.yandex.ru/contest/*",
+        "https://contest.yandex.ru/contest/*/*",
+        "https://contest.yandex.ru/contest/*/*/*",
+        "https://contest.yandex.ru/contest/*/*/*/*"
+      ],
+      "js": ["code-highlighter.js"],
+      "run_at": "document_idle",
+      "world": "MAIN"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["styles.css"],
+      "matches": ["https://contest.yandex.ru/*"]
+    }
+  ]
+}
